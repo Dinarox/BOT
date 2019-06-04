@@ -1,0 +1,94 @@
+//Calling the package
+var Discord = require('discord.js');
+var bot = new Discord.Client();
+
+//listener Event: Message Received ( This will run everytime a message is received)
+bot.on('message', message => {
+
+
+  //Variables
+  var sender = message.author; //The person who sent the message
+  var msg = message.content.toUpperCase(); //Takes the message, and makes it all uppercase
+  var prefix = '!' //The text before commands, you can set this to what ever you want
+
+  //deleting specific message ( Messages that are not an ID for me)
+  if (message.channel.id === '585045259722162176', '370618294165831680','388060375972839448', '583035925341143152',
+  '583041295447228422', '583041947107852329', '583041990464241791', '583043373636517910', '583043472890789897'){
+    //salon-test, général, envoi-photo, channel-general-jeu, *suite*1, *suite*2,*suite*3,*suite*4,*suite*5
+    //Check if the message is in the specific channel
+    /*if (isNaN(message.content)) { // Check if the message is not a number, if it's not the following code will run
+      message.delete()// this deletes the message
+      message.author.send('Merci de ne pas ecrire dans ce channel, merci') //This private messages the author that what they posted was invalid.
+    }*/
+  }
+});
+
+//listener event: Bot Launched
+bot.on('ready', () => {
+  console.log('Le bot est en route...') //Runs when the bot is launched
+  console.log('Bonjour Dinarox!')
+  // You can put any code you want here, it will run when you turn on.
+  bot.on("message", (message) => {
+    if (message.content.includes("https://")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes("http://")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes("www.")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes(".com")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes(".fr")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes(".org")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes(".io")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes(".net")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+    }
+    else if (message.content.includes(".xxx")) {
+      console.log("deleted " + message.content + " from " + message.author)
+      message.delete(1);
+      message.channel.sendMessage("Toute publicité ou lien partagé doit être écrit dans les channels dédiés." + message.author)
+      message.channel.sendMessage("Bonjour <@&585370222190657547>, " + message.author +" a tenté de partager un lien pornographique, un avertissement est suggéré pour éviter un renouvellement de ce genre.")
+    }
+  });
+//we will be going over setting 'game playing', 'status', and 'streaming'
+
+//status
+bot.user.setStatus('dnd') //Your status goes here, it can be 'Online', 'idle', 'invisible', and 'dnd'
+
+//game and streaming
+bot.user.setGame('Nettoyage URL') //you can change the string to whatever you want it to say
+
+//o set a stream, add another option like this:
+//bot.user.setGame('CHAINE DINAROX', 'https://www.twitch.tv/dinarox_tv'); //it has to be a twitch stream link
+
+})
+
+//login
+bot.login('NTg0ODI3OTgwODA3Nzk4ODI1.XPQm9A.o4pVlOk0n85G9au-KAOrphEm8wc')
+//Don't let people see this code, people can control your bot, including the servers your bot has admin on.
